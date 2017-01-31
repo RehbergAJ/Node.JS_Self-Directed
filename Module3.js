@@ -42,7 +42,7 @@ file.pipe(newFile);
 var fs = require('fs');
 var http = require('http');
 
-http.createServer(function(request, resoinse) {
+http.createServer(function(request, response) {
     var newFile = fs.createWriteStream("readme_copy.md");
     request.pipe(newFile);
 
