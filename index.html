@@ -1,0 +1,21 @@
+<script>
+ var server = io.connect('http://localhost:8080');
+ server.on('connect', function(data){
+    $('#status').htnl('Connected to chattr);
+    nickname = prompt("What is your nickname?");
+
+    server.emit('join', nickname); <--- notify the server of the user nickname
+});
+
+/** 
+ * using redis
+ * socket.on('add chatter', function(name){
+ *  var chatter = $('<li>'+name+'<li>').data('name', name);
+ *  $('#chatters').append(chatter);
+ * });
+ * 
+ * server.on('remove chatter', function(name) {
+ *   $('#chatters li[data-name='+ name + ']').remove();
+ * });
+*/
+</script>
