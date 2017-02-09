@@ -2,18 +2,72 @@
 //var redis = require('redis');
 //var client = redis.createClient();
 
-client.on('join', function(name){
-    //notify other clients of chat joiner
-    client.broadcast.emit("add chatter", name);
-    /**redisClient.smembers('names', function(err, names){
-     * names.forEach(function(name){
-     * client.emit('add chatter', name);
-     * });
-    }); //emit all the currently logged in chatters to the newly connected client
+var express = require('express');
+var app = express();
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+var messages = []; /* store message in array*/
 
-    //redisClient.sadd("chatters", names);
-    */
+io.on('connection', function(client) {
+    console.log('client connected...');
+
+    client.emit('message', { hello: 'world'});
+
+    client.on('messages', function(data){
+        var nickname = client.nickname;
+        console.log(data);
+        client.broadcast.emit("messages", data);
+        client.broadcast.emit("message", nickname + ": " + message);
+        client.emit("message", nickname + ": " + message);
+    });
+
+    client.on('join', function(name){    
+        client.nickname = name;
+        //notify other clients of chat joiner
+        client.broadcast.emit("add chatter", name);
+        /**redisClient.smembers('names', function(err, names){
+         * names.forEach(function(name){
+         * client.emit('add chatter', name);
+         * });
+        }); //emit all the currently logged in chatters to the newly connected client
+
+        //redisClient.sadd("chatters", names);
+        */
+    });
 });
+
+var storeMessage = function(name, data){
+    messages.push({name: name, data: data}); /* add message to end of array */
+    if (messages.length > 10){
+        messages.shift(); /*if more than 10 messages long, remove the first one */
+    }
+}
+
+io.sockets.on('connection', function(client) {
+    client.on('join', function(name){
+        client.set('nickname', name);
+    messages.forEach(function(message){
+        client.emit("messages", message.name + ": " + message.data);
+    }); /** iterate through message array and emit message on the connecting client for each one */
+        client.broadcast.emit("chat", name + " joined the chat");
+    });
+    client.on("messages", function(message){
+        client.get("nickname", function(error, name){
+            client.broadcast.emit("messages", name + ": " + message);
+            client.emit("messages", name + ": " + message);
+            storeMessage(client.nickname, message);
+            storeMessage(name, message); /**when client sends a message call storeMessage */
+        });
+    });
+});
+
+app.get('/', function (require, response) {
+    res.sendFile(__dirname + 'index.html');
+});
+
+server.listen(8080);
+
+
 
 client.on('disconnect', function(name){
     client.get('nickname', function(err, name){
@@ -56,28 +110,3 @@ client.get("message1", function(err,reply){
  *   });
  * });
  */
-
-var messages = []; /* store message in array*/
-var storeMessage = function(name, data){
-    messages.push({name: name, data: data}); /* add message to end of array */
-    if (messages.length > 10){
-        messages.shift(); /*if more than 10 messages long, remove the first one */
-    }
-}
-
-io.sockets.on('connection', function(client) {
-    client.on('join', function(name){
-        client.set('nickname', name);
-    messages.forEach(function(message){
-        client.emit("messages", message.name + ": " + message.data);
-    }); /** iterate through message array and emit message on the connecting client for each one */
-        client.broadcast.emit("chat", name + " joined the chat");
-    });
-    client.on("messages", function(message){
-        client.get("nickname", function(error, name){
-            client.broadcast.emit("messages", name + ": " + message);
-            client.emit("messages", name + ": " + message);
-            storeMessage(name, message); /**when client sends a message call storeMessage */
-        });
-    });
-});
