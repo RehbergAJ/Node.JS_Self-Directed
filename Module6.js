@@ -91,7 +91,7 @@ io.on('connection', function(client){
     });
 });
 
-//-------- index.html
+//-------- index.htmlz
 /*
 *<script>
 *  var server = io.connect('http://localhost:8080');

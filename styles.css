@@ -1,0 +1,37 @@
+body {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);    
+}
+.name {
+    width: 400px;   
+    min-width: 100px;
+    height: 300px;  
+    min-height: 25px;  
+    resize: none;
+    margin-right: 20px;
+    border: solid;
+}
+.input {
+     width: 400px;
+     min-width: 100px;
+     height: 100px;
+     min-height: 25px;
+     margin-left: 20px;
+     border: solid;
+}
+.output {
+    width: 500px;
+    min-width: 100px;
+    height: 200px;
+    min-height: 25px;
+    resize: none;
+    margin-left: 20px;
+    border: solid;
+}
+.submit {
+    width: 100px;
+    height: 100px;
+    margin-left: 135px;
+}
