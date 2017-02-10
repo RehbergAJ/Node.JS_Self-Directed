@@ -5,21 +5,21 @@ body {
     transform: translate(-50%, -50%);    
 }
 .name {
-    width: 400px;   
+    width: 200px;   
     min-width: 100px;
     height: 300px;  
     min-height: 25px;  
-    resize: none;
-    margin-right: 20px;
+    resize: none;    
     border: solid;
+    margin-left: 50%;
 }
 .input {
      width: 400px;
      min-width: 100px;
      height: 100px;
-     min-height: 25px;
-     margin-left: 20px;
+     min-height: 25px;     
      border: solid;
+     margin-right: 25%;
 }
 .output {
     width: 500px;
@@ -27,11 +27,11 @@ body {
     height: 200px;
     min-height: 25px;
     resize: none;
-    margin-left: 20px;
     border: solid;
+    margin-right: 25%;
 }
 .submit {
     width: 100px;
     height: 100px;
-    margin-left: 135px;
+    margin-left: 45%;
 }
