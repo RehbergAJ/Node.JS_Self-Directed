@@ -11,27 +11,26 @@ socket.on('message', function (data) {
     alert(data.hello);
 });
 
-
-
  var server = io.connect('http://localhost:8080');
  server.on('connect', function(data){
-    $('#status').htnl('Connected to chattr');
-    nickname = prompt("What is your nickname?");
+    $('#status').html('Connected to Node Chat');
+    nickname = prompt("What is your name?");
 
     server.emit('join', nickname); //--- notify the server of the user nickname
 });
+ 
+ // using redis
+ //invokes callback to get members name
+ //use JQuery to store members name
+ socket.on('add member', function(name){
+    var member = $('<li>' + name + '<li>').data('name', name);
+    $('#members').append(member);
+ });
+  
+ server.on('remove member', function(name) {
+    $('#member li[data-name='+ name + ']').remove();
+  });
 
-/** 
- * using redis
- * socket.on('add chatter', function(name){
- *  var chatter = $('<li>'+name+'<li>').data('name', name);
- *  $('#chatters').append(chatter);
- * });
- * 
- * server.on('remove chatter', function(name) {
- *   $('#chatters li[data-name='+ name + ']').remove();
- * });
-*/
 </script>
 
 <!DOCTYPE html>
