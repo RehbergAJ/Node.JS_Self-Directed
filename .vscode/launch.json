@@ -7,24 +7,17 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Launch hello.js",
             "program": "${workspaceRoot}/hello.js",
             "cwd": "${workspaceRoot}"
         },
     {
         "type": "node2",
         "request": "launch",
-        "name": "Launch Program",
+        "name": "Launch App",
         "program": "${workspaceRoot}/app.js",
         "cwd": "${workspaceRoot}"
-    },
-    {
-        "type": "node2",
-        "request": "launch",
-        "name": "Launch Program",
-        "program": "${workspaceRoot}/Users/andre/Desktop/School Year 2/Second Semester/Self Directed/Node.JS_Self-Directed/",
-        "cwd": "${workspaceRoot}"
-    },
+    },    
         {
             "type": "node",
             "request": "attach",
