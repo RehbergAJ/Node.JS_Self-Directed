@@ -175,4 +175,4 @@ var server = app.listen(app.get('port'), function() {
 	// log a message to console!
 });
 
-module.exports = app;
+});
