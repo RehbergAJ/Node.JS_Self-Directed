@@ -1,30 +1,152 @@
-<!DOCTYPE html>
+﻿<html>
 <head>
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="styles.css">
-    <title>Rehberg's Chat Application using Node.JS</title>
-    <body>
-        <h1 style="text-align: center; color:blue;">Chat Room Beta</h1>
-        <div class="container">
-            <div class="col-sm-4">
-                <textarea id="txtName" class="form-control name" rows="20" readonly></textarea>
-            </div>
-            <div class="col-sm-6">
-                <textarea id="txtOutput" class="form-control output" rows="15" readonly></textarea>
-            </div>
-            <div class="col-sm-3">                    
-                <input type="text" id="txtInput" class="input" maxlength="140" placeholder="Enter your message"/>                            
-            </div>
-            <div class="col-sm-3">
-                <input type"button" id="btnSubmit" class="btn btn-primary submit" value="Submit"/>            
-            </div>
-        </div>        
-    </body>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <title>Bootstrap Chat Box Example</title>
+    <!-- BOOTSTRAP CORE STYLE CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONT AWESOME  CSS -->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE CSS -->
+    <link href="assets/css/style.css" rel="stylesheet" />
 </head>
+<body>
+
+
+    <div class="container">
+        <div class="row pad-top pad-bottom">
+            <!--
+            ================ CHAT HISTORY ==================    
+            -->  
+            <div class=" col-lg-6 col-md-6 col-sm-6">
+                <div class="chat-box-div">
+                    <div class="chat-box-head">
+                        CHAT HISTORY
+                            <div class="btn-group pull-right">
+                                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <span class="fa fa-cogs"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">                                    
+                                    <li><a href="#"><span class="fa fa-comments-o"></span>&nbsp;Online</a></li>
+                                    <li><a href="#"><span class="fa fa-map-marker"></span>&nbsp;Invisible</a></li>
+                                    <li><a href="#"><span class="fa fa-lock"></span>&nbsp;Busy</a></li>                                    
+                                    <li class="divider"></li>
+                                    <li><a href="#"><span class="fa fa-circle-o-notch"></span>&nbsp;Logout</a></li>
+                                </ul>
+                            </div>
+                    </div>
+                    <div class="panel-body chat-box-main">
+                        <div class="chat-box-left">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        </div>
+                        <div class="chat-box-name-left">
+                            <img src="assets/img/user.png" alt="bootstrap Chat box user image" class="img-circle" />
+                            -  John Smith
+                        </div>
+                        <hr class="hr-clas" />
+                        <div class="chat-box-right">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        </div>
+                        <div class="chat-box-name-right">
+                            <img src="assets/img/user.gif" alt="bootstrap Chat box user image" class="img-circle" />
+                            - James Franco
+                        </div>
+                        <hr class="hr-clas" />
+                        <div class="chat-box-left">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        </div>
+                        <div class="chat-box-name-left">
+                            <img src="assets/img/user.png" alt="bootstrap Chat box user image" class="img-circle" />
+                            -  John Smith
+                        </div>
+                        <hr class="hr-clas" />
+                        <div class="chat-box-right">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        </div>
+                        <div class="chat-box-name-right">
+                            <img src="assets/img/user.gif" alt="bootstrap Chat box user image" class="img-circle" />
+                            - James Franco
+                        </div>
+                        <hr class="hr-clas" />
+                    </div>
+                    <div class="chat-box-footer">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Enter Text Here...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-info" type="button">SEND</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--
+            ================ CHAT ONLINE ==================    
+            -->    
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="chat-box-online-div">
+                    <div class="chat-box-online-head">
+                        ONLINE USERS
+                    </div>
+                    <div class="panel-body chat-box-online">
+
+                        <div class="chat-box-online-left">
+                            <img src="assets/img/user.png" alt="bootstrap Chat box user image" class="img-circle" />
+                            -  John Smith
+                            <br />
+                            ( <small>Active from 3 hours</small> )
+                        </div>
+                        <hr class="hr-clas-low" />
+
+                        <div class="chat-box-online-right">
+                            <img src="assets/img/user.gif" alt="bootstrap Chat box user image" class="img-circle" />
+                            -  James Franco
+                            <br />
+                            ( <small>Active from 10 hours</small> )
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+            <!--
+            ================ CHATROOMS ==================    
+            -->  
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="chat-box-new-div">
+                    <div class="chat-box-new-head">
+                        CHATROOMS
+                    </div>
+                    <div class="panel-body chat-box-new">
+                        <img src="assets/img/user.png" alt="bootstrap Chat box user image" class="img-circle" />
+                        (@John)<hr class="hr-clas-low" />
+
+                        <img src="assets/img/user.gif" alt="bootstrap Chat box user image" class="img-circle" />
+                        (@James)<hr class="hr-clas-low" />
+
+                        <img src="assets/img/user.png" alt="bootstrap Chat box user image" class="img-circle" />
+                        <img src="assets/img/user.gif" alt="bootstrap Chat box user image" class="img-circle" /><br />
+                        (@John, @James)<hr class="hr-clas-low" />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- USING SCRIPTS BELOW TO REDUCE THE LOAD TIME -->
+    <!-- CORE JQUERY SCRIPTS FILE -->
+    <script src="assets/js/jquery-1.11.1.js"></script>
+    <!-- CORE BOOTSTRAP SCRIPTS  FILE -->
+    <script src="assets/js/bootstrap.js"></script>
+</body>
+
+</html>

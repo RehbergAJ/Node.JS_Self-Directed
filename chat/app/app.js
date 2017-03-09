@@ -75,7 +75,7 @@ app.controller('MainCtrl', function ($scope, Window, GUI, $mdDialog, socket, $ht
 
     //handle room creation
     function handleRoomSubMenu(i) {
-      var clieckedRoom = rooms[i];
+      var clickedRoom = rooms[i];
       //append each room to menu
       roomsMenu.append(new GUI.MenuItem({
         label: clickedRoom.toUpperCase(),
